@@ -45,10 +45,10 @@ export default function Home() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/contact">
-            <Button size="lg" className="h-14 px-10 text-lg" as="div">Book Free Consultation</Button>
+            <Button size="lg" className="h-14 px-10 text-lg">Book Free Consultation</Button>
           </Link>
           <Link href="/contact">
-            <Button size="lg" variant="outline" className="h-14 px-10 text-lg" as="div">Contact Us</Button>
+            <Button size="lg" variant="outline" className="h-14 px-10 text-lg">Contact Us</Button>
           </Link>
         </div>
       </section>
