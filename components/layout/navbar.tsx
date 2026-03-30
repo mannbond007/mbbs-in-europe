@@ -40,10 +40,17 @@ const NavLink = ({
 );
 
 const Logo = () => (
-  <Link href="/" className="flex items-center gap-3 group">
-    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-md transition-transform duration-300 group-hover:scale-110">
-      <Stethoscope className="w-5 h-5 text-white" />
-    </div>
+  <Link href="/" className="flex items-center gap-2 group">
+    <div className="flex items-center justify-center w-10 h-11 rounded-[4px] 
+  bg-gradient-to-br from-green-500 to-emerald-600
+  backdrop-blur-sm
+  shadow-[0_8px_20px_rgba(16,185,129,0.35)] 
+  border border-white/10
+  transition-all duration-300 
+  group-hover:scale-110 group-hover:shadow-[0_12px_28px_rgba(16,185,129,0.45)]"
+>
+  <Stethoscope className="w-7 h-7 text-white drop-shadow-md" />
+</div>
 
     <div className="flex flex-col leading-tight">
       <span className="text-[18px] font-bold text-gray-900">MBBS</span>
