@@ -16,11 +16,16 @@ const countries = [
   { name: "Poland", desc: "Premium infrastructure, world-class teaching.", slug: "poland" },
   { name: "Bulgaria", desc: "Easy admission, low fees, high tech.", slug: "bulgaria" },
   { name: "Moldova", desc: "Very low cost, growing IT capabilities.", slug: "moldova" },
-  { name: "Macedonia", desc: "Great medical facilities, calm environment.", slug: "macedonia" },
+  // { name: "Macedonia", desc: "Great medical facilities, calm environment.", slug: "macedonia" },
   { name: "Cyprus", desc: "European standard, ideal climate, high safety.", slug: "cyprus" },
   { name: "Bosnia", desc: "Emerging destination, low tuition fees.", slug: "bosnia" },
   { name: "Hungary", desc: "Globally recognized degrees, beautiful life.", slug: "hungary" },
   { name: "Austria", desc: "Top tier education, premium universities.", slug: "austria" },
+
+  // ✅ New ones added
+  { name: "Germany", desc: "Low or no tuition, globally respected education.", slug: "germany" },
+  { name: "Italy", desc: "IMAT-based admission with top-ranked universities.", slug: "italy" },
+  { name: "Georgia", desc: "Most popular for Indian students, affordable & easy.", slug: "georgia" },
 ];
 
 export function Countries() {

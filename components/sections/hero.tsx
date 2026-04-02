@@ -124,10 +124,10 @@ export function Hero() {
               {/* Icon */}
               <div className="mb-2 flex justify-center">
                 <div
-                  className="flex items-center justify-center w-8 h-8 rounded-md 
+                  className="flex items-center justify-center w-10 h-10 rounded-md 
                         bg-gradient-to-br from-green-500 to-emerald-600"
                 >
-                  <stat.icon className="w-4 h-4 text-white" />
+                  <stat.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
 
