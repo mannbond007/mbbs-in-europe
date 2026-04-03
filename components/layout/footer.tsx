@@ -33,11 +33,11 @@ export function Footer() {
         <div>
           <h3 className="text-white font-semibold mb-6">Top Destinations</h3>
           <ul className="space-y-3 text-sm">
-            <li><Link href="/study-mbbs-in-serbia" className="hover:text-primary transition-colors">MBBS in Serbia</Link></li>
-            <li><Link href="/study-mbbs-in-romania" className="hover:text-primary transition-colors">MBBS in Romania</Link></li>
-            <li><Link href="/study-mbbs-in-poland" className="hover:text-primary transition-colors">MBBS in Poland</Link></li>
-            <li><Link href="/study-mbbs-in-bulgaria" className="hover:text-primary transition-colors">MBBS in Bulgaria</Link></li>
-            <li><Link href="/study-mbbs-in-moldova" className="hover:text-primary transition-colors">MBBS in Moldova</Link></li>
+            <li><Link href="/countries/serbia" className="hover:text-primary transition-colors">MBBS in Serbia</Link></li>
+            <li><Link href="/countries/romania" className="hover:text-primary transition-colors">MBBS in Romania</Link></li>
+            <li><Link href="/countries/poland" className="hover:text-primary transition-colors">MBBS in Poland</Link></li>
+            <li><Link href="/countries/bulgaria" className="hover:text-primary transition-colors">MBBS in Bulgaria</Link></li>
+            <li><Link href="/countries/moldova" className="hover:text-primary transition-colors">MBBS in Moldova</Link></li>
           </ul>
         </div>
 

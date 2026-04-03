@@ -49,7 +49,7 @@ const Button = React.memo(
           }}
           style={{ transformOrigin: "center" }} // ✅ prevents shift
           className={cn(baseStyles, variants[variant], sizes[size], className)}
-          {...props}
+          {...(props as any)}
         />
       );
     }
