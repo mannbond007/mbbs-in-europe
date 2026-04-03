@@ -82,67 +82,218 @@ export function WhyEurope() {
 
           {/* Image Section */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={VIEWPORT_CONFIG}
-            transition={{ ...STANDARD_TRANSITION, duration: 0.8 }}
+            transition={{ ...STANDARD_TRANSITION, duration: 0.7 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-3xl blur-3xl" />
+            {/* Glow Background */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10 blur-3xl rounded-[2rem]" />
 
-            <div className="bg-white border text-foreground border-border rounded-3xl p-1 shadow-soft relative z-10 glass overflow-hidden">
-              {/* Image */}
-              <div className="relative w-full h-64 sm:h-72 md:h-[500px] rounded-2xl overflow-hidden">
+            {/* Grid Layout */}
+            <div className="relative z-10 grid grid-cols-6 gap-4 auto-rows-[140px] md:auto-rows-[160px]">
+              {/* 🔹 Main Image */}
+              <div className="col-span-6 md:col-span-4 row-span-2 relative rounded-3xl overflow-hidden group">
                 <Image
                   src="/college_02.jpg"
-                  alt="European Medical University Campus"
+                  alt="European Medical University"
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   priority
+                  className="object-cover transition duration-700 group-hover:scale-105"
                 />
+
+                <div className="absolute top-4 left-4 z-20">
+                  <div
+                    className="
+      relative flex items-center gap-2 px-3.5 py-1.5 rounded-full
+      bg-black/40 backdrop-blur-xl
+      border border-white/20
+      shadow-[0_8px_25px_rgba(0,0,0,0.25)]
+      text-white
+      overflow-hidden
+    "
+                  >
+                    {/* Subtle glass shine */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                    {/* Status dot */}
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70 animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                    </span>
+
+                    {/* Text */}
+                    <span className="relative text-xs font-semibold tracking-tight">
+                      Top Ranked University
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Floating badge */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                whileHover={{ scale: 1.05 }}
-                className="absolute top-6 md:top-10 left-2 md:left-4
-             px-4 py-3 rounded-2xl 
-             bg-white/90 backdrop-blur-md
-             border border-gray-200
-             shadow-xl
-             flex items-center gap-3 z-20 
-             transition-all duration-300"
-              >
-                {/* Icon */}
-                <div
-                  className="flex items-center justify-center w-10 h-10 rounded-full 
-               bg-gradient-to-br from-green-500 to-emerald-600 
-               shadow-md"
-                >
-                  <CheckCircle2 className="text-white w-5 h-5" />
-                </div>
-
-                {/* Text */}
-                <div className="leading-tight">
-                  <p className="font-semibold text-sm text-gray-900">
-                    NMC Approved
-                  </p>
-                  <p className="text-xs text-gray-600">Valid in India</p>
-                </div>
-
-                {/* subtle border glow */}
-                <div
-                  className="absolute inset-0 rounded-2xl 
-                  ring-1 ring-black/5 pointer-events-none"
+              {/* 🔹 Image 2 */}
+              <div className="col-span-3 md:col-span-2 relative rounded-2xl overflow-hidden group">
+                <Image
+                  src="/college_01.jpg"
+                  alt="Advanced Library"
+                  fill
+                  sizes="25vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
                 />
-              </motion.div>
+
+                <div className="absolute bottom-3 left-3 z-20">
+                  <div
+                    className="
+      relative flex items-center gap-2 px-3 py-1.5 rounded-full
+      bg-black/40 backdrop-blur-xl
+      border border-white/20
+      shadow-[0_6px_20px_rgba(0,0,0,0.25)]
+      text-white
+      overflow-hidden
+    "
+                  >
+                    {/* Glass shine */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                    {/* Small indicator */}
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/80" />
+
+                    {/* Text */}
+                    <span className="relative text-[11px] font-medium tracking-tight">
+                      Advanced Library
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 🔹 Image 3 */}
+              <div className="col-span-3 md:col-span-2 relative rounded-2xl overflow-hidden group">
+                <Image
+                  src="/01.jpg"
+                  alt="Clinical Training"
+                  fill
+                  sizes="25vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute bottom-3 left-3 z-20">
+                  <div
+                    className="
+      relative flex items-center gap-2 px-3 py-1.5 rounded-full
+      bg-black/40 backdrop-blur-xl
+      border border-white/20
+      shadow-[0_6px_20px_rgba(0,0,0,0.25)]
+      text-white
+      overflow-hidden
+    "
+                  >
+                    {/* Glass shine */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                    {/* Indicator */}
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/80" />
+
+                    {/* Text */}
+                    <span className="relative text-[11px] font-medium tracking-tight">
+                      Clinical Training
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 🔹 Image 4 */}
+              <div className="col-span-3 relative rounded-2xl overflow-hidden group">
+                <Image
+                  src="/02.jpg"
+                  alt="Modern Hostel"
+                  fill
+                  sizes="25vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute top-3 right-3 z-20">
+                  <div
+                    className="
+      relative flex items-center gap-2 px-3 py-1.5 rounded-full
+      bg-black/40 backdrop-blur-xl
+      border border-white/20
+      shadow-[0_6px_20px_rgba(0,0,0,0.25)]
+      text-white
+      overflow-hidden
+    "
+                  >
+                    {/* Glass shine */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                    {/* Small indicator */}
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/80" />
+
+                    {/* Text */}
+                    <span className="relative text-[11px] font-medium tracking-tight">
+                      Modern Hostel
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 🔹 Image 5 */}
+              <div className="col-span-3 relative rounded-2xl overflow-hidden group">
+                <Image
+                  src="/03.jpg"
+                  alt="Student Life"
+                  fill
+                  sizes="25vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute bottom-3 left-3 z-20">
+                  <div
+                    className="
+      relative flex items-center gap-2 px-3 py-1.5 rounded-full
+      bg-black/40 backdrop-blur-xl
+      border border-white/20
+      shadow-[0_6px_20px_rgba(0,0,0,0.25)]
+      text-white
+      overflow-hidden
+    "
+                  >
+                    {/* Glass shine */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                    {/* Indicator */}
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/80" />
+
+                    {/* Text */}
+                    <span className="relative text-[11px] font-medium tracking-tight">
+                      Student Life
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            {/* Floating Trust Badge */}
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-16 left-2 z-30 flex items-center gap-3 rounded-2xl border border-border/60 bg-background/80 backdrop-blur-xl px-4 py-2.5 shadow-xl"
+            >
+              {/* Icon */}
+              <div className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10 text-primary">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
+
+              {/* Text */}
+              <div className="leading-tight">
+                <p className="text-sm font-semibold text-foreground tracking-tight">
+                  NMC Approved
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Recognized Globally
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

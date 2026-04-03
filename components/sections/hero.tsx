@@ -101,53 +101,54 @@ export function Hero() {
           </Button>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-border"
-        >
-          {[
-            { label: "NMC Approved", value: "100%", icon: CheckCircle },
-            { label: "Success Rate", value: "98%", icon: TrendingUp },
-            { label: "Partner Universities", value: "25+", icon: University },
-            { label: "Students Placed", value: "1000+", icon: Users },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center group rounded-xl p-4 
-                 bg-white/40 backdrop-blur-md 
-                 border border-border/60 
-                 shadow-sm hover:shadow-md 
-                 transition-all duration-300"
-            >
-              {/* Icon */}
-              <div className="mb-2 flex justify-center">
-                <div
-                  className="flex items-center justify-center w-10 h-10 rounded-md 
-                        bg-gradient-to-br from-green-500 to-emerald-600"
-                >
-                  <stat.icon className="w-6 h-6 text-white" />
-                </div>
-              </div>
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  viewport={{ once: true }}
+  className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5 pt-10 border-t border-border/60"
+>
+  {[
+    { label: "NMC Approved", value: "100%", icon: CheckCircle },
+    { label: "Success Rate", value: "98%", icon: TrendingUp },
+    { label: "Partner Universities", value: "25+", icon: University },
+    { label: "Students Placed", value: "1000+", icon: Users },
+  ].map((stat, i) => (
+    <motion.div
+      key={stat.label}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: i * 0.08, duration: 0.4 }}
+      viewport={{ once: true }}
+      className="group relative overflow-hidden rounded-2xl border border-border/60 bg-background/70 backdrop-blur-xl p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+    >
+      {/* Subtle Glow Effect */}
+      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+      </div>
 
-              {/* Value */}
-              <div
-                className="text-3xl font-bold tracking-tight mb-1 
-                      bg-gradient-to-r from-green-600 to-emerald-500 
-                      bg-clip-text text-transparent 
-                      transition-transform duration-300 group-hover:scale-105"
-              >
-                {stat.value}
-              </div>
+      {/* Icon */}
+      <div className="mb-3 flex justify-center">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary/20">
+          <stat.icon className="h-5 w-5" />
+        </div>
+      </div>
 
-              {/* Label */}
-              <div className="text-sm font-medium text-muted-foreground tracking-wide">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+      {/* Value */}
+      <div className="text-3xl font-bold tracking-tight text-foreground mb-1 transition-all duration-300 group-hover:scale-[1.03]">
+        {stat.value}
+      </div>
+
+      {/* Label */}
+      <div className="text-xs font-medium text-muted-foreground/80 tracking-wide">
+        {stat.label}
+      </div>
+
+      {/* Bottom Accent Line */}
+      <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-primary transition-all duration-500 group-hover:w-full" />
+    </motion.div>
+  ))}
+</motion.div>
       </div>
     </section>
   );
