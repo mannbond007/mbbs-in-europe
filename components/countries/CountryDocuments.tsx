@@ -1,56 +1,85 @@
 "use client";
 
-import { FileCheck2 } from "lucide-react";
+import { FileCheck2, UserCheck, ClipboardList, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import { STAGGER_CONTAINER_VARIANTS, STAGGER_CHILD_VARIANTS, VIEWPORT_CONFIG } from "@/lib/animations";
 
 export function CountryDocuments({ documents, eligibility }: { documents: string[], eligibility: string[] }) {
   return (
     <motion.div 
-      variants={STAGGER_CONTAINER_VARIANTS()}
+      variants={STAGGER_CONTAINER_VARIANTS(0.1)}
       initial="hidden"
       whileInView="show"
       viewport={VIEWPORT_CONFIG}
-      className="mt-24 grid md:grid-cols-2 gap-8"
+      className="mt-32 grid md:grid-cols-2 gap-10"
     >
       {/* Eligibility Card */}
       <motion.div 
         variants={STAGGER_CHILD_VARIANTS}
-        className="bg-primary/5 rounded-[2rem] p-8 md:p-10 border border-primary/10 relative overflow-hidden group"
+        className="group bg-linear-to-br from-emerald-500/10 via-primary/5 to-transparent rounded-[3rem] p-10 lg:p-14 border border-primary/20 relative overflow-hidden shadow-2xl shadow-primary/5"
       >
-        <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none transition-transform duration-700 group-hover:scale-110">
-          <FileCheck2 className="w-64 h-64 text-primary" />
+        <div className="absolute top-0 right-0 p-10 opacity-[0.05] pointer-events-none transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-6">
+          <UserCheck className="w-64 h-64 text-primary" />
         </div>
-        <h3 className="text-3xl font-extrabold text-foreground mb-8">Eligibility Criteria</h3>
-        <ul className="space-y-5 relative z-10">
-          {eligibility.map((item, idx) => (
-            <li key={idx} className="flex items-start gap-4">
-              <div className="shrink-0 mt-1 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center">
-                <div className="h-2.5 w-2.5 rounded-full bg-primary" />
-              </div>
-              <span className="text-muted-foreground font-medium text-lg leading-relaxed">{item}</span>
-            </li>
-          ))}
-        </ul>
+        
+        <div className="relative z-10">
+          <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center mb-8 border border-primary/20">
+             <UserCheck className="w-7 h-7 text-primary" />
+          </div>
+          
+          <h3 className="text-3xl lg:text-4xl font-black text-foreground mb-10 tracking-tight">
+            Eligibility Criteria
+          </h3>
+          
+          <ul className="space-y-6">
+            {eligibility.map((item, idx) => (
+              <li key={idx} className="flex items-start gap-5 group/item">
+                <div className="shrink-0 mt-1.5 h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300">
+                  <div className="h-2 w-2 rounded-full bg-primary" />
+                </div>
+                <span className="text-muted-foreground font-semibold text-lg lg:text-xl leading-relaxed">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </motion.div>
 
       {/* Documents Card */}
       <motion.div 
         variants={STAGGER_CHILD_VARIANTS}
-        className="bg-background rounded-[2rem] p-8 md:p-10 border border-border/60 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]"
+        className="group bg-white dark:bg-gray-900/40 rounded-[3rem] p-10 lg:p-14 border border-border/50 shadow-2xl shadow-black/5 hover:shadow-primary/5 transition-all duration-500 relative overflow-hidden"
       >
-        <h3 className="text-3xl font-extrabold text-foreground mb-8 flex items-center gap-4">
-          <FileCheck2 className="text-secondary w-8 h-8" />
-          Documents Required
-        </h3>
-        <ul className="space-y-4">
-          {documents.map((doc, idx) => (
-            <li key={idx} className="flex items-center gap-4 text-muted-foreground border-b border-border/40 pb-4 last:border-0 last:pb-0">
-              <span className="text-secondary font-bold text-2xl leading-none">&middot;</span>
-              <span className="font-medium">{doc}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none transition-transform duration-1000 group-hover:scale-110 group-hover:-rotate-6">
+           <ClipboardList className="w-64 h-64 text-foreground" />
+        </div>
+
+        <div className="relative z-10">
+          <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center mb-8 border border-border/50">
+             <FileCheck2 className="w-7 h-7 text-secondary" />
+          </div>
+
+          <h3 className="text-3xl lg:text-4xl font-black text-foreground mb-10 tracking-tight flex items-center gap-4">
+            Documents Required
+          </h3>
+          
+          <ul className="space-y-5">
+            {documents.map((doc, idx) => (
+              <li key={idx} className="flex items-center gap-5 text-muted-foreground/90 border-b border-border/40 pb-5 last:border-0 last:pb-0 group/doc">
+                <div className="w-2 h-2 rounded-full bg-secondary opacity-40 group-hover/doc:opacity-100 group-hover/doc:scale-150 transition-all duration-300" />
+                <span className="font-bold text-lg lg:text-xl tracking-tight">{doc}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-12 p-6 rounded-[2rem] bg-accent/50 border border-border/50 flex items-start gap-4">
+            <Info className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+            <p className="text-sm font-semibold text-muted-foreground leading-relaxed">
+              Our team provides complete assistance in document translation, apostille, and verification services.
+            </p>
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   );
