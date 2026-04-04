@@ -1,131 +1,211 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "framer-motion";
-
-const contactSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Valid email is required"),
-  phone: z.string().min(10, "Valid phone is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type ContactData = z.infer<typeof contactSchema>;
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  ShieldCheck,
+  User,
+  GraduationCap,
+} from "lucide-react";
 
 export default function ContactPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm<ContactData>({
-    resolver: zodResolver(contactSchema),
-  });
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data: ContactData) => {
-    console.log("Contact form submitted:", data);
-    alert("Message sent! We will get back to you shortly.");
+  const onSubmit = (data: any) => {
+    console.log(data);
   };
 
   return (
-    <div className="bg-background min-h-screen pt-32 pb-24">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Get in <span className="text-primary italic">Touch</span></h1>
-          <p className="text-xl text-muted-foreground">Have questions about MBBS in Europe? Our experts are ready to answer all your queries and guide you through the process.</p>
-        </div>
+    <section className="relative min-h-screen py-16 md:py-28 px-4 bg-gradient-to-b from-green-50 via-white to-white">
 
-        <div className="grid lg:grid-cols-3 gap-12 items-start max-w-6xl mx-auto">
-          {/* Contact Info */}
-          <div className="space-y-8 lg:col-span-1">
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 text-primary p-3 rounded-2xl">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-1">Email Us</h4>
-                <p className="text-muted-foreground">info@mbbsineurope.in</p>
-                <p className="text-muted-foreground">admissions@mbbsineurope.in</p>
-              </div>
-            </div>
+      {/* Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,197,94,0.15),transparent_60%)] pointer-events-none" />
 
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 text-primary p-3 rounded-2xl">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-1">Call Us</h4>
-                <p className="text-muted-foreground">+91 98765 43210</p>
-                <p className="text-muted-foreground">Mon - Sat, 10 AM - 7 PM</p>
-              </div>
-            </div>
+      <div className="max-w-6xl mx-auto relative z-10">
 
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 text-primary p-3 rounded-2xl">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-1">Visit Us</h4>
-                <p className="text-muted-foreground">Connaught Place, New Delhi</p>
-                <p className="text-muted-foreground">India 110001</p>
-              </div>
-            </div>
+        {/* ================= HERO ================= */}
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+
+          {/* ICON HEADING */}
+          <div className="flex items-center justify-center gap-2 text-sm sm:text-base font-medium text-green-600 mb-2 md:mb-3">
+            <GraduationCap className="w-5 h-5 text-green-600/80" />
+            <span>2026 Admissions Open</span>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2 bg-white border border-border rounded-4xl p-8 md:p-12 shadow-soft">
-            <form onSubmit={handleSubmit(onSubmit)} className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground ml-1">Full Name</label>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight">
+            Study MBBS Abroad with{" "}
+            <span className="text-green-600">Expert Guidance</span>
+          </h1>
+
+          <p className="mt-3 md:mt-6 text-sm sm:text-base md:text-lg text-gray-500">
+            Get admission help, fee details & counseling — free.
+          </p>
+        </div>
+
+        {/* ================= MOBILE FORM ================= */}
+        <div className="lg:hidden mb-10">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-lg">
+
+            {/* PHONE ICON HEADING */}
+            <div className="flex items-center justify-center gap-2 text-green-600 font-medium text-xs mb-4">
+              <Phone className="w-4 h-4 text-green-600/80" />
+              <span>Get Callback in 10 Minutes</span>
+            </div>
+
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-4"
+            >
+              {/* NAME */}
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   {...register("name")}
-                  className="w-full h-12 px-4 rounded-xl border border-border bg-background outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
-                  placeholder="John Doe"
+                  placeholder="Full Name"
+                  className="w-full h-12 pl-10 pr-4 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-100 outline-none text-sm"
                 />
-                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-foreground ml-1">Email Address</label>
-                <input
-                  {...register("email")}
-                  className="w-full h-12 px-4 rounded-xl border border-border bg-background outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
-                  placeholder="john@example.com"
-                />
-                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
-              </div>
-
-              <div className="space-y-2 md:col-span-2">
-                <label className="text-sm font-semibold text-foreground ml-1">Phone Number</label>
+              {/* PHONE */}
+              <div className="relative">
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   {...register("phone")}
-                  className="w-full h-12 px-4 rounded-xl border border-border bg-background outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium"
-                  placeholder="+91 98765 43210"
+                  placeholder="Phone Number"
+                  className="w-full h-12 pl-10 pr-4 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-100 outline-none text-sm"
                 />
-                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
               </div>
 
-              <div className="space-y-2 md:col-span-2">
-                <label className="text-sm font-semibold text-foreground ml-1">Your Message</label>
-                <textarea
-                  {...register("message")}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-border bg-background outline-none focus:ring-2 focus:ring-primary/50 transition-all font-medium resize-none"
-                  placeholder="How can we help you?"
-                />
-                {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
-              </div>
-
-              <div className="md:col-span-2 pt-2">
-                <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-                  <Button type="submit" size="lg" className="w-full h-14 text-lg items-center gap-2">
-                    Send Message <Send className="w-5 h-5" />
-                  </Button>
-                </motion.div>
-              </div>
+              {/* CTA */}
+              <motion.button
+                whileTap={{ scale: 0.98 }}
+                className="h-12 rounded-xl bg-green-600 text-white font-semibold flex items-center justify-center gap-2 shadow-md"
+              >
+                Get Free Counseling
+                <Send className="w-4 h-4" />
+              </motion.button>
             </form>
+
+            <p className="text-xs text-gray-500 text-center mt-3">
+              ✔ No spam • 100% Free • Instant response
+            </p>
+          </div>
+        </div>
+
+        {/* ================= DESKTOP LAYOUT ================= */}
+        <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
+
+          {/* LEFT INFO */}
+          <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+            {[
+              {
+                icon: Mail,
+                title: "Email",
+                content: ["info@mbbsineurope.in"],
+              },
+              {
+                icon: Phone,
+                title: "Call",
+                content: ["+91 98765 43210"],
+              },
+              {
+                icon: MapPin,
+                title: "Location",
+                content: ["New Delhi, India"],
+              },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={i}
+                  className="flex flex-col lg:flex-row items-center lg:items-start gap-3"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-green-50 text-green-600">
+                    <Icon className="w-5 h-5" />
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-gray-900 text-sm">
+                      {item.title}
+                    </h4>
+                    {item.content.map((line, idx) => (
+                      <p key={idx} className="text-gray-500 text-xs">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* DESKTOP FORM */}
+          <div className="hidden lg:block lg:col-span-2">
+            <div className="rounded-3xl border border-gray-200 bg-white/90 backdrop-blur-xl p-10 shadow-xl">
+
+              {/* ICON HEADING */}
+              <div className="flex items-center justify-center gap-2 text-green-600 font-medium text-sm mb-6">
+                <Phone className="w-4 h-4 text-green-600/80" />
+                <span>Get a Call from MBBS Expert within 10 Minutes</span>
+              </div>
+
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="grid md:grid-cols-2 gap-6"
+              >
+                {/* NAME */}
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    {...register("name")}
+                    placeholder="Full Name"
+                    className="w-full h-12 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 outline-none"
+                  />
+                </div>
+
+                {/* PHONE */}
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    {...register("phone")}
+                    placeholder="Phone Number"
+                    className="w-full h-12 pl-12 pr-4 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 outline-none"
+                  />
+                </div>
+
+                {/* EMAIL */}
+                <input
+                  {...register("email")}
+                  placeholder="Email Address"
+                  className="h-12 px-4 rounded-xl border border-gray-200 md:col-span-2"
+                />
+
+                {/* CTA */}
+                <div className="md:col-span-2">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full h-14 bg-green-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2"
+                  >
+                    Book Free Counseling Call
+                    <Send className="w-5 h-5" />
+                  </motion.button>
+                </div>
+              </form>
+
+              {/* TRUST */}
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mt-6">
+                <ShieldCheck className="w-4 h-4 text-green-600" />
+                No spam • Your data is सुरक्षित • 100% Free Guidance
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
